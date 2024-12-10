@@ -1,0 +1,33 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+
+    <!-- Unidade de persistência para PostgreSQL -->
+    <persistence-unit name="PostgreSQL_PU" transaction-type="RESOURCE_LOCAL">
+        <class>Domain.Produto</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Modulo34"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="987546"/>
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <!-- Unidade de persistência para MongoDB -->
+    <persistence-unit name="MongoDB_PU" transaction-type="RESOURCE_LOCAL">
+        <class>Domain.Produto</class>
+        <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="mongodb://localhost:27017/sua_base_mongodb"/>
+            <property name="datanucleus.storeManagerType" value="mongodb"/>
+            <property name="datanucleus.schema.autoCreateAll" value="true"/>
+            <property name="datanucleus.ConnectionDriverName" value="mongodb.MongoDriver"/>
+            <property name="datanucleus.ConnectionURL" value="mongodb://localhost:27017/sua_base_mongodb"/>
+        </properties>
+    </persistence-unit>
+</persistence>
